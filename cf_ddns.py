@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-
-import sys
-import json
-import datetime
-from time import sleep
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=line-too-long
 # pylint: disable=broad-exception-raised
 # pylint: disable=broad-exception-caught
+
+import sys
+import json
+import datetime
+from time import sleep
 
 import http.client
 
