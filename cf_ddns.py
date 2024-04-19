@@ -48,17 +48,6 @@ if __name__ == '__main__':
     else:
       raise Exception('Failed to get public IP')
 
-  if SOURCE_IP is not None:
-    RECORD_VALUE = get_current_public_ip(SOURCE_IP)
-  else:
-    RECORD_VALUE = get_current_public_ip()
-
-  # Check IP version
-  if '.' in RECORD_VALUE:
-    RECORD_TYPE = 'A'
-  elif ':' in RECORD_VALUE:
-    RECORD_TYPE = 'AAAA'
-
   def perform_http_request(api_token: str, method: str, endpoint: str, payload: dict = None) -> dict:
 
     # Set the request headers
@@ -261,6 +250,17 @@ if __name__ == '__main__':
 
   while MAX_RETRY > 0:
     try:
+      if SOURCE_IP is not None:
+        RECORD_VALUE = get_current_public_ip(SOURCE_IP)
+      else:
+        RECORD_VALUE = get_current_public_ip()
+
+      # Check IP version
+      if '.' in RECORD_VALUE:
+        RECORD_TYPE = 'A'
+      elif ':' in RECORD_VALUE:
+        RECORD_TYPE = 'AAAA'
+
       perform_ddns(API_TOKEN, DOMAIN, RECORD_TYPE,
                    RECORD_NAME, RECORD_VALUE, TTL, PROXIED)
       break
