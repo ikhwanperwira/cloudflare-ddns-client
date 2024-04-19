@@ -1,5 +1,7 @@
 # Cloudflare DDNS Client
 
+[![Script Still Working](https://github.com/ikhwanperwira/cloudflare-ddns-client/actions/workflows/main.yml/badge.svg)](https://github.com/ikhwanperwira/cloudflare-ddns-client/actions/workflows/main.yml)
+
 ## Introduction
 The `cf_ddns.py` script is a command-line tool that allows you to update your Cloudflare DNS records with your current IP address. This is useful for dynamic IP addresses where you want to keep your DNS records up to date.
 
