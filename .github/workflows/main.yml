@@ -22,8 +22,8 @@ jobs:
 
     - name: Update DNS record
       env:
-      API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      IP: ${{ env.IP }}
+        API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        IP: ${{ env.IP }}
       run: python3 cf_ddns.py $API_TOKEN mip.my.id github-workflow-test 60 false $IP > output.txt
     
     - name: Display Last Line
