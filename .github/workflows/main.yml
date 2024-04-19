@@ -18,12 +18,11 @@ jobs:
 
     - name: Get Ethernet IP
       id: get_ip
-      run: echo "::set-env name=IP::$(cat ethernet_ip.txt)"
+      run: echo "IP=$(cat ethernet_ip.txt)" >> $GITHUB_ENV
 
     - name: Update DNS record
       env:
         API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        IP: ${{ env.IP }}
       run: python3 cf_ddns.py $API_TOKEN mip.my.id github-workflow-test 60 false $IP > output.txt
     
     - name: Display Last Line
