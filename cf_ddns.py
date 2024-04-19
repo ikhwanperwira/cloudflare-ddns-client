@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+import sys
+import json
+import datetime
+from time import sleep
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
@@ -6,11 +11,7 @@
 # pylint: disable=broad-exception-raised
 # pylint: disable=broad-exception-caught
 
-import sys
 import http.client
-import json
-import datetime
-from time import sleep
 
 if __name__ == '__main__':
 
@@ -94,7 +95,7 @@ if __name__ == '__main__':
       return True
 
     print('Token is invalid.')
-    return False
+    raise Exception('Token is invalid.')
 
   def get_zone_id(api_token: str, domain: str) -> str:
     # Print a blank line for readability
@@ -107,7 +108,7 @@ if __name__ == '__main__':
     status, data = perform_http_request(api_token, 'GET', '/client/v4/zones')
 
     if status != 200:
-      # If the request was not successful, print an error message and return None
+      # If the request was not successful, print an error message and raise an exception
       print('Failed to list zones.')
       raise Exception('Failed to list zones.')
 
@@ -140,7 +141,7 @@ if __name__ == '__main__':
 
     # Check if the request was successful
     if status != 200:
-      # If the request was not successful, print an error message and return None
+      # If the request was not successful, print an error message and raise an exception
       print('Failed to get DNS records.')
       raise Exception('Failed to get DNS records')
 
@@ -185,9 +186,9 @@ if __name__ == '__main__':
 
     # Check if the request was successful
     if status != 200:
-      # If the request was not successful, print an error message and return None
+      # If the request was not successful, print an error message and raise an exception
       print('Failed to update DNS record.')
-      return False
+      raise Exception('Failed to update DNS record')
 
     # Print a message indicating that the DNS record was successfully updated
     print(f'{RECORD_NAME}.{DOMAIN} with type {RECORD_TYPE} updated to {RECORD_VALUE} where TTL is {TTL} and Proxied is {PROXIED}.')
@@ -218,9 +219,9 @@ if __name__ == '__main__':
 
     # Check if the request was successful
     if status != 200:
-      # If the request was not successful, print an error message and return None
+      # If the request was not successful, print an error message and raise an exception
       print('Failed to create DNS record.')
-      return False
+      raise Exception('Failed to create DNS record')
 
     # Print a message indicating that the DNS record was successfully updated
     print(f'{record_name}.{domain} with type {record_type} created to {record_value} where TTL is {ttl} and Proxied is {proxied}.')
@@ -228,13 +229,10 @@ if __name__ == '__main__':
 
   def perform_ddns(api_token: str, domain: str, record_type: str, record_name: str, record_value: str, ttl: int, proxied: bool) -> bool:
     # Verify the token
-    if not verify_token(api_token):
-      return False
+    verify_token(api_token)
 
     # Get the zone ID
     zone_id = get_zone_id(api_token, domain)
-    if zone_id is None:
-      return False
 
     # Get the record ID
     record_id = get_record_id(api_token, record_name, domain, zone_id)
@@ -269,3 +267,7 @@ if __name__ == '__main__':
       MAX_RETRY -= 1
       sleep(5)
       continue
+
+  if MAX_RETRY == 0:
+    print('Failed to update DNS record after 3 retries.')
+    sys.exit(1)
