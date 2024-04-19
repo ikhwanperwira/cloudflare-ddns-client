@@ -18,6 +18,12 @@ Clone the repository:
   git clone https://github.com/ikhwanperwira/cloudflare-ddns-client.git
   ```
 
+  OR
+
+  ```shell
+  wget https://raw.githubusercontent.com/ikhwanperwira/cloudflare-ddns-client/main/cf_ddns.py && chmod +x cf_ddns.py && mv cf_ddns.py /usr/bin
+  ```
+
 ## Usage
 To use `cf_ddns.py`, follow these steps:
 
