@@ -8,7 +8,7 @@ The `cf_ddns.py` script is a command-line tool that allows you to update your Cl
 ## Prerequisites
 Before using `cf_ddns.py`, make sure you have the following prerequisites installed:
 
-- Python 3.x
+- Python 3.x (No need `pip`, all dependencies using built-in)
 - Cloudflare API Token with these permission:
   ```
   All zones - Zone Settings:Read, Zone:Read, DNS:Edit
