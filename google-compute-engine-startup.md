@@ -1,5 +1,5 @@
 # Google Compute Engine Startup Script
-If you are creating Google Compute Engine with ephemeral Public IP address, then you can add this startup script so that your DNS Record is updated automatically based on current Public IP address.
+If you are creating Google Compute Engine Instance with ephemeral Public IP address, then you can add this startup script so that your DNS Record is updated automatically based on current Public IP address.
 > **_NOTE:_** Currently, it's only supported for Linux-based OSes with systemd startup. It has been tested on Ubuntu 22.04 LTS minimal. I can't guarantee it's worked for another distro, but as long as OS startup is using Systemd, I think it's worked fine.
 
 
