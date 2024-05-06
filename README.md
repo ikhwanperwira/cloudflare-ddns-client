@@ -38,7 +38,7 @@ To use `cf_ddns.py`, follow these steps:
     
 4. Move `cf_ddns.py` to `/usr/bin`:
     ```shell
-    sudo mv cf_ddns.py /usr/bin
+    sudo chmod +x cf_ddns.py && sudo mv cf_ddns.py /usr/bin
     ```
 
 5. Run the script with the following command:
