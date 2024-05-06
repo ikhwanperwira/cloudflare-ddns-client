@@ -82,5 +82,9 @@ To configure the `cf_ddns.py` script to run as a systemd service on Linux, follo
     sudo systemctl start cf_ddns.service
     ```
 
+## Cloud VM Startup
+* Google Cloud Platform: [Compute Engine](https://github.com/ikhwanperwira/cloudflare-ddns-client/blob/main/google-compute-engine-startup.md)
+
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
