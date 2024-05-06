@@ -38,12 +38,12 @@ To use `cf_ddns.py`, follow these steps:
 
 3. Run the script with the following command:
     ```shell
-    python3 cf_ddns.py python cf_ddns.py <API_TOKEN> <DOMAIN> <RECORD_NAME> <TTL> <PROXIED> <SOURCE_IP (OPTIONAL)>
+    python3 cf_ddns.py python cf_ddns.py <API_TOKEN> <DOMAIN> <SUBDOMAIN> <TTL> <PROXIED> <SOURCE_IP (OPTIONAL)>
     ```
 
     Example:
     ```shell
-    python3 cf_ddns.py <API_TOKEN> example.com subdomain 3600 true 172.16.0.2
+    python3 cf_ddns.py <API_TOKEN> example.com my_subdomain 60 true 10.128.0.69
     ```
 
 4. The script will retrieve your current public IP address and update the specified DNS record with the new IP address.
@@ -70,7 +70,7 @@ To configure the `cf_ddns.py` script to run as a systemd service on Linux, follo
 
     [Service]
     Type=simple
-    ExecStart=/usr/bin/cf_ddns.py <API_TOKEN> <DOMAIN> <RECORD_NAME> <TTL> <PROXIED> <SOURCE_IP (OPTIONAL)>
+    ExecStart=/usr/bin/cf_ddns.py <API_TOKEN> <DOMAIN> <SUBDOMAIN> <TTL> <PROXIED> <SOURCE_IP (OPTIONAL)>
 
     [Install]
     WantedBy=multi-user.target
