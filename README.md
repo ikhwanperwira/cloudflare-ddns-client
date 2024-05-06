@@ -53,6 +53,10 @@ To use `cf_ddns.py`, follow these steps:
 
 6. The script will retrieve your current public IP address and update the specified DNS record with the new IP address.
 
+## Check Date Updated
+You can check the record date updated by looking at the comment in the Cloudflare DNS Dashboard, this is useful to indicate your system uptime. The time format order is year, month, day, hour, minute, second, and UTC+00.
+![latest_updated_date](https://github.com/ikhwanperwira/cloudflare-ddns-client/assets/72451078/98537e40-37bd-43b7-b5bf-12bb0cc11fd6)
+
 ## Startup Configuration
 
 To configure the `cf_ddns.py` script to run as a systemd service on Linux, follow these steps:
