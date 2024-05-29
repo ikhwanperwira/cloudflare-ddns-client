@@ -19,7 +19,7 @@ wget https://raw.githubusercontent.com/ikhwanperwira/cloudflare-ddns-client/main
 chmod +x cf_ddns.py
 mv cf_ddns.py /usr/bin/
 
-ip addr show | awk '/inet.*e(n.*s|th|o|np)/ {print $2}' | cut -d '/' -f 1 | tr -d '\n' > ethernet_ip.txt
+ip addr show | awk '/inet.*e(n.*s|th|o|np)/ {print $2}' | cut -d '/' -f 1 | tr -d '\n' > /tmp/ethernet_ip.txt
 SOURCE_IP=$(cat /tmp/ethernet_ip.txt)
 
 cat <<EOF > /etc/systemd/system/cf_ddns.service
