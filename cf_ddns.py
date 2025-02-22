@@ -39,7 +39,7 @@ if __name__ == '__main__':
           'ifconfig.me', source_address=(source_ip, 0))
     else:
       conn = http.client.HTTPConnection('ifconfig.me')
-    conn.request('GET', '/', heeaders={"User-Agent": "curl/7.54"})
+    conn.request('GET', '/', headers={"User-Agent": "curl/7.54"})
     response = conn.getresponse()
     data = response.read().decode()
     conn.close()
