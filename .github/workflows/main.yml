@@ -16,12 +16,12 @@ jobs:
     - name: Save Ethernet IP
       run: ip addr show | awk '/inet.*e(n.*s|th|o|np)/ {print $2}' | cut -d '/' -f 1 | tr -d '\n' > ethernet_ip.txt
 
-    - name: Show Current Ethernet IP
-      run: cat ethernet_ip.txt
-
     - name: Get Ethernet IP
       id: get_ip
       run: echo "IP=$(cat ethernet_ip.txt)" >> $GITHUB_ENV
+
+    - name: Show Current Ethernet IP
+      run: echo "Current Ethernet IP is $IP"
 
     - name: Update DNS record
       env:
